@@ -3,7 +3,7 @@ require_once 'vendor/autoload.php';
 use GuzzleHttp\Client;
 
 $client = new Client();
-$res = $client->get('http://test-url/nagios/statusJson.php', ['auth' => ['nagiosadministrator', 'nagiospassword']]);
+$res = $client->get('http://testurl/nagios/statusJson.php', ['auth' => ['nagiosadmin', 'nagiospassword']]);
 
 $arr = $res->json();
 $services = $arr['services'];
@@ -109,7 +109,6 @@ $services = $arr['services'];
                 echo "<th>Output</th>";
                 echo "<th>Last check</th>";
                 echo "<th>Next check</th>";
-                echo "<th>Header</th>";
                 echo "</tr>";
                 echo "</thead>";
                 echo "<tbody>";
@@ -129,7 +128,6 @@ $services = $arr['services'];
                     echo "<td>" . $output['plugin_output'] . "</td>";
                     echo "<td>" . $lastCheck->format('d-m-Y H:i:s') . "</td>";
                     echo "<td>" . $nextCheck->format('d-m-Y H:i:s') . "</td>";
-                    echo "<td>libero</td>";
                     echo "</tr>";
                 }
                 echo "</tbody>";
